@@ -1,0 +1,39 @@
+<h3>Welcome to the scammy cart!</h3>
+
+<div *ngFor="let item of items">
+  <span> {{ item.name }} </span>
+  <p>{{ item.price | currency }}</p>
+</div>
+
+<button type="button" (click)="clearCart()">Clear cart</button>
+<p><a routerLink="/shipping">Shipping Prices</a></p>
+<p *ngIf="items">
+  total is:
+  {{ calculateTotal() + 2.99 | currency }}
+  (shipping expenses included)
+</p>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <h4>Shipping form</h4>
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+
+  <div>
+    <label for="emailAddress"> Email </label>
+    <input id="emailAddress" type="text" formControlName="emailAddress" />
+  </div>
+
+  <div>
+    <label for="phoneNumber"> Phone number </label>
+    <input id="phoneNumber" type="number" formControlName="phoneNumber" />
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>

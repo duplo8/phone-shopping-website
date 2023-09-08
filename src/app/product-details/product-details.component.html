@@ -1,0 +1,15 @@
+<div *ngIf="product">
+  <h2>
+    welcome to the product place, where we sell {{ product.name }}
+    <p *ngIf="product.description">(which is {{ product.description }})</p>
+    for {{ product.price | currency }} ☺☻♥
+  </h2>
+
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+
+  <app-product-alerts (notify)="onNotify()"> </app-product-alerts>
+
+  <button type="button" (click)="addToCart(product)">Add to cart</button>
+</div>
